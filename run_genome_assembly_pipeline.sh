@@ -23,7 +23,7 @@ get_input () {
         done
         
         if ((info_usage)); then
-                echo -e "The script contains a Genome Assembly pipeline.\nRun the script in the following format after giving the script executable permission:\n./run_assembly.sh\nArguments available\n\t-p <Path to folder containing input fastq forward and backward reads annotated as <name>_1 and <name>_2 and are gzipped>\n\t-q\tPerform quality control and trimming\n\t-g <Specify genome assembler to use, with options as follows:\n\t\t1) a\tauto\n\t\t2) s\tSPAdes\n\t\t3) m\tMaSuRCA\n\t-o <Path to output folder>\n\t-t <Number of threads>\n\t-v \tVerbose mode\n\t-h\tPrint usage information"
+                echo -e "The script contains a Genome Assembly pipeline.\nRun the script in the following format after giving the script executable permission:\n./run_assembly.sh\nArguments available\n\t-p <Path to folder containing input fastq forward and backward reads annotated as <name>_1 and <name>_2 and are gzipped>\n\t-q\tPerform quality control and trimming\n\t-g <Specify genome assembler to use, with options as follows:\n\t\t1) a\tauto\n\t\t2) u\tUnicycler\n\t\t3) m\tMaSuRCA\n\t-o <Path to output folder>\n\t-t <Number of threads>\n\t-v \tVerbose mode\n\t-h\tPrint usage information"
                 exit
         fi
 }
@@ -61,18 +61,17 @@ check_files () {
                 exit 1
         fi
 	IFS='=' read -a f<<< "$(sed -n '1p' config.txt)"
-	spades_path=${f[1]}
+	unicycler_path=${f[1]}
 	IFS='=' read -a f<<< "$(sed -n '2p' config.txt)"
 	masurca_path=${f[1]}
 	IFS='=' read -a f<<< "$(sed -n '3p' config.txt)"
 	fastp_path=${f[1]}
-	if test -f "$spades_path"; then
+	if test -f "$unicycler_path"; then
                 if ((verbose)); then
-                        echo "SPAdes path  exists"
+                        echo "Unicycler path  exists"
                 fi
         else
-		echo $spades_path
-                echo "SPAdes path doesn't exist"
+                echo "Unicycler path doesn't exist"
                 exit 1
         fi
 	if test -f "$masurca_path"; then
@@ -109,12 +108,12 @@ genome_assembly () {
                 echo "\nExecuting genome assembly with tool "
         fi
 
-	if [ "$genomeAssembler" == "s" ]; then
-		echo "Spades"
+	if [ "$genomeAssembler" == "u" ]; then
+		echo "Unicycler"
 		if ((qualityControl)); then
-                	bash run_spades.sh -p ${outputFolder}/trimmed_reads -o ${outputFolder} -m ${spades_path} -t ${threads} -v
+                	bash run_unicycler.sh -p ${outputFolder}/trimmed_reads -o ${outputFolder} -m ${unicycler_path} -t ${threads} -v
         	else
-                	bash run_spades.sh -p ${pathToInputFiles} -o ${outputFolder} -m ${spades_path} -t ${threads} -v
+                	bash run_unicycler.sh -p ${pathToInputFiles} -o ${outputFolder} -m ${unicycler_path} -t ${threads} -v
         	fi
 	elif [ "$genomeAssembler" == "m" ]; then
 		echo "MaSuRCA"

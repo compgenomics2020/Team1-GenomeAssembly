@@ -6,8 +6,8 @@ Cecilia, Devishi Kesar, Heather Patrick, Jessica Mulligan, Laura Mora, Lawrence 
 **Fastp Binary** for performing read quality and trimming
 It can be obtained from: https://github.com/OpenGene/fastp
 
-**SPAdes binary** for performing genome assembly
-It can be obtained from: https://github.com/ablab/spades
+**Unicycler binary** for performing genome assembly
+It can be obtained from: https://github.com/rrwick/Unicycler
 
 **MaSuRCA Binary** for performing genome assembly
 It can be obtained from: https://github.com/alekseyzimin/masurca

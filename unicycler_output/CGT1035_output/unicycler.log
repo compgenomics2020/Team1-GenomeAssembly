@@ -1,0 +1,28 @@
+
+Starting Unicycler (2020-02-16 16:14:22)
+----------------------------------------
+    Welcome to Unicycler, an assembly pipeline for bacterial genomes. Since you provided only short reads, Unicycler will essentially function as a SPAdes-optimiser. It will try many k-mer sizes, choose the best based on contig length and graph connectivity, and scaffold the graph using SPAdes repeat resolution.
+    For more information, please see https://github.com/rrwick/Unicycler
+
+Command: /home/projects/group-a/bin/miniconda3/bin/unicycler -1 /home/projects/group-a/data//CGT1035_1.fq.gz -2 /home/projects/group-a/data//CGT1035_2.fq.gz -t 4 -o /home/projects/group-a/Team1-GenomeAssembly/unicycler_output/CGT1035_output
+
+Unicycler version: v0.4.8
+Using 4 threads
+
+Making output directory:
+  /home/projects/group-a/Team1-GenomeAssembly/unicycler_output/CGT1035_output
+
+Dependencies:
+  Program         Version           Status  
+  spades.py       3.13.0            good    
+  racon                             not used
+  makeblastdb     2.5.0+            good    
+  tblastn         2.5.0+            good    
+  bowtie2-build   2.3.5.1           good    
+  bowtie2         2.3.5.1           good    
+  samtools        0.1.20            too old 
+  java            11.0.1-internal   good    
+  pilon           1.23              good    
+  bcftools                          not used
+
+Error: Unspecified error with Unicycler dependencies
