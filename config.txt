@@ -1,0 +1,3 @@
+SPAdes_path=/home/projects/group-a/bin/SPAdes-3.14.0-Linux/bin/spades.py
+MaSuRCA_path=/home/projects/group-a/bin/miniconda3/bin/masurca
+FASTp_path=/home/projects/group-a/bin/fastp
