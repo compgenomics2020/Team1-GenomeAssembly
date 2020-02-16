@@ -1,5 +1,5 @@
 # Team1-GenomeAssembly
-Cecilia, Devishi Kesar, Heather Patrick, Jessica Mulligan, Laura Mora, Lawrence McKinney
+Cecilia (Hyeonjeong) Cheon, Devishi Kesar, Heather Patrick, Jessica Mulligan, Laura Mora, Lawrence McKinney
 
 ## Software Requirements
 
