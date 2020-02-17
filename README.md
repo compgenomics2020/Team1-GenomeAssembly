@@ -29,7 +29,7 @@ Update the paths of the tools downloaded from Software Requirements in the confi
     -p    path to directory containing gzipped fastq forward and backward reads
     -o    path to output directory
     -q    perform quality control and trimming using fastp
-    -g    assembler of choice; can pick between MaSuRCa, Unicycler, or auto (pipeline will run both and pick the best option)
+    -g    assembler of choice; can pick between MaSuRCa (m), Unicycler (u), or auto (a) (for auto, pipeline will run both and pick the best option)
     -v    activate verbose mode
     -h    print usage information    
 ```
