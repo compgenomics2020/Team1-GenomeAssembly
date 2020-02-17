@@ -8,16 +8,16 @@ get_input () {
 	# Setting default number of threads as 4
 	threads=4
 
-        while getopts "t:g:p:o:qvh" option
+        while getopts "t:g:p:o:q:v:h" option
         do
                 case $option in
                         t) threads=$OPTARG;;
 			p) pathToInputFiles=$OPTARG;;
                         g) genomeAssembler=$OPTARG;;
 			o) outputFolder=$OPTARG;;
-                        q) qualityControl=1;;
+                        q) qualityControl=$OPTARG;;
                         h) info_usage=1;;
-			v) verbose=1;;
+			v) verbose=$OPTARG;;
                         *) echo "Incorrect arguments used. Use -h to know about the arguments available."
                 esac
         done
@@ -66,6 +66,8 @@ check_files () {
 	masurca_path=${f[1]}
 	IFS='=' read -a f<<< "$(sed -n '3p' config.txt)"
 	fastp_path=${f[1]}
+	IFS='=' read -a f<<< "$(sed -n '4p' config.txt)"
+        quast_path=${f[1]}
 	if test -f "$unicycler_path"; then
                 if ((verbose)); then
                         echo "Unicycler path  exists"
@@ -90,7 +92,14 @@ check_files () {
                 echo "FASTp path doesn't exist"
                 exit 1
         fi
-
+	if test -f "$quast_path"; then
+                if ((verbose)); then
+                        echo "QUAST path exists"
+                fi
+        else
+                echo "QUAST path doesn't exist"
+                exit 1
+        fi
 }
 
 quality_control () {
@@ -134,7 +143,22 @@ genome_assembly () {
 
 	elif [ "$genomeAssembler" == "a" ]; then
 		echo "Auto method\n"
-		ls ${pathToInputFiles} | grep _1.fq.gz | xargs -I gw basename -s _1.fq.gz gw | xargs -I gwa /home/projects/group-a/bin/quast/quast.py ${outputFolder}/SPAdes/gwa_output/contigs.fasta ${outputFolder}/masurca_output/gwa_output/CA/final.genome.scf.fasta -o gwa -l SPAdes,MaSuRCa # I think this is the same format as above???? Yup!!	
+		if ((qualityControl)); then
+                        if ((verbose)); then
+                                echo "\nStarted genome assembly\n"
+                        fi
+
+                        bash run_masurca.sh -p ${outputFolder}/trimmed_reads -o ${outputFolder} -m ${masurca_path} -t ${threads} -v
+                	bash run_unicycler.sh -p ${outputFolder}/trimmed_reads -o ${outputFolder} -m ${unicycler_path} -t ${threads} -v
+			bash run_quast.sh -q "${quast_path}" -p "${outputFolder}/trimmed_reads" -u "${outputFolder}/unicycler_output" -m "${outputFolder}/masurca_output/" -o "${outputFolder}" -t "${threads}"		
+		else
+                        if ((verbose)); then
+                                echo "\nStarted genome assembly\n"
+                        fi
+                        bash run_masurca.sh -p ${pathToInputFiles} -o ${outputFolder} -m ${masurca_path} -t ${threads} -v
+			bash run_unicycler.sh -p ${pathToInputFiles} -o ${outputFolder} -m ${unicycler_path} -t ${threads} -v
+			bash run_quast.sh -q "${quast_path}" -p "${outputFolder}" -u "${outputFolder}/unicycler_output" -m "${outputFolder}/masurca_output/" -o "${outputFolder}" -t "${threads}"
+                fi
 	else
                 echo "Wrong input option for genome assembler. Type -h option for help"
                 exit 1
