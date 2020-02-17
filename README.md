@@ -7,13 +7,19 @@ This pipeline is designed to automate the assembly of a genome with the option t
 * [References](#References)
 
 ## Team 1- Genome Assembly
-The Genome Assembly group for Team 1 is composed of: Cecilia (Hyeonjeong) Cheon, Devishi Kesar, Laura Mora, Lawrence McKinney, Jessica Mulligan, and Heather Patrick
+The Genome Assembly group members for Team 1 are: 
+  * Cecilia (Hyeonjeong) Cheon
+  * Devishi Kesar
+  * Laura Mora
+  * Lawrence McKinney
+  * Jessica Mulligan
+  * Heather Patrick
 
 ## Software Requirements
 1. [fastp](https://github.com/OpenGene/fastp) (if performing read quality and trimming)
 2. [MaSuRCa](https://github.com/alekseyzimin/masurca) (if choosing MaSuRCa or the auto option for performing genome assembly)
 3. [Unicycler](https://github.com/rrwick/Unicycler) (if choosing Unicycler or the auto option for performing genome assembly)
-4. [Quast](https://github.com/ablab/quast) (program for quality control metrics)
+4. [Quast](https://github.com/ablab/quast) (tool for quality control metrics)
 
 ## Usage
 ```
