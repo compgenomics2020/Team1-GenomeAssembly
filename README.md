@@ -16,12 +16,13 @@ The Genome Assembly group members for Team 1 are:
   * Heather Patrick
 
 ## Software Requirements
-1. [fastp](https://github.com/OpenGene/fastp) (if performing read quality and trimming)
+1. [fastp](https://github.com/OpenGene/fastp) (if performing read quality assessment and trimming)
 2. [MaSuRCa](https://github.com/alekseyzimin/masurca) (if choosing MaSuRCa or the auto option for performing genome assembly)
 3. [Unicycler](https://github.com/rrwick/Unicycler) (if choosing Unicycler or the auto option for performing genome assembly)
 4. [Quast](https://github.com/ablab/quast) (tool for quality control metrics)
 
 ## Usage
+INCLUDE INFO ABOUT CONFIG FILE
 ```
 ./run_genome_assembly_pipeline.sh [-t <int>] -p <dir_path> -o <dir_name> [-q] -g <m|u|a> [-v] [-h]
     -t    number of threads; default is 4
