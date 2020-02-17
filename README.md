@@ -12,8 +12,8 @@ The Genome Assembly group for Team 1 is composed of: Cecilia (Hyeonjeong) Cheon,
 ## Software Requirements
 1. [fastp](https://github.com/OpenGene/fastp) (if performing read quality and trimming)
 2. [MaSuRCa](https://github.com/alekseyzimin/masurca) (if choosing MaSuRCa or the auto option for performing genome assembly)
-3. [Unicycler binary](https://github.com/rrwick/Unicycler) (if choosing Unicycler or the auto option for performing genome assembly)
-4. [Quast](https://github.com/ablab/quast)
+3. [Unicycler](https://github.com/rrwick/Unicycler) (if choosing Unicycler or the auto option for performing genome assembly)
+4. [Quast](https://github.com/ablab/quast) (program for quality control metrics)
 
 ## Usage
 ```
