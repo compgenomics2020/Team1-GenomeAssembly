@@ -22,7 +22,7 @@ The Genome Assembly group members for Team 1 are:
 4. [Quast](https://github.com/ablab/quast) (tool for quality control metrics)
 
 ## Usage
-INCLUDE INFO ABOUT CONFIG FILE
+Update tool paths in the config.txt file prior to running the genome assembly pipeline.
 ```
 ./run_genome_assembly_pipeline.sh [-t <int>] -p <dir_path> -o <dir_name> [-q] -g <m|u|a> [-v] [-h]
     -t    number of threads; default is 4
