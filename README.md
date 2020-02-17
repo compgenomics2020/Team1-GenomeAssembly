@@ -1,5 +1,5 @@
 # Genome Assembly Pipeline
-This pipeline is designed to automate the assembly of a genome with the option to perform quality control measures and allows the user to pick between the MaSuRCa or Unicycler assemblers or the auto option, which will decide for the user based on quality metrics such as the total length of the assembled genome and N50.
+This pipeline is designed to automate the assembly of a genome with the option to perform quality control prior to assembly and allows the user to pick between the MaSuRCa or Unicycler assemblers or the auto option, which will decide choose the assembler for the user based on quality metrics given by Quast.
 
 * [Team 1 Genome Assembly ](#Team-1-Genome-Assembly)
 * [Software Requirements](#Software-Requirements)
@@ -22,7 +22,7 @@ The Genome Assembly group members for Team 1 are:
 4. [Quast](https://github.com/ablab/quast) (tool for quality control metrics)
 
 ## Usage
-Update tool paths in the config.txt file prior to running the genome assembly pipeline.
+Update the paths of the tools downloaded from Software Requirements in the config.txt file prior to running the genome assembly pipeline.
 ```
 ./run_genome_assembly_pipeline.sh [-t <int>] -p <dir_path> -o <dir_name> [-q] -g <m|u|a> [-v] [-h]
     -t    number of threads; default is 4
@@ -33,6 +33,7 @@ Update tool paths in the config.txt file prior to running the genome assembly pi
     -v    activate verbose mode
     -h    print usage information    
 ```
+The `auto` option will pick MaSuRCa as the assembler of choice unless the length is more than 10% shorter than Unicycler.
 
 ## References
 * Shifu Chen, Yanqing Zhou, Yaru Chen, Jia Gu; fastp: an ultra-fast all-in-one FASTQ preprocessor, Bioinformatics, Volume 34, Issue 17, 1 September 2018, Pages i884–i890, https://doi.org/10.1093/bioinformatics/bty560
