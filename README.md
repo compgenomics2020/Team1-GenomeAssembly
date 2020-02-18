@@ -23,6 +23,7 @@ The Genome Assembly group members for Team 1 are:
 
 ## Usage
 Update the paths of the tools downloaded from Software Requirements in the config.txt file prior to running the genome assembly pipeline.
+Note: this pipeline assumes the data is paired end reads and has the naming structure `*_1.fq.gz` and `*_2.fq.gz`.
 ```
 ./run_genome_assembly_pipeline.sh [-t <int>] -p <dir_path> -o <dir_name> [-q] -g <m|u|a> [-v] [-h]
     -t    number of threads; default is 4
